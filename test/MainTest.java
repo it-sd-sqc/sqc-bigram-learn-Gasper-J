@@ -61,4 +61,18 @@ class MainTest {
   }
 
   // TODO: Create your test(s) below. /////////////////////////////////////////
+    @Test
+    void getIdCapitalization() {
+      assertDoesNotThrow(() -> {
+          Main.reset();
+          Connection db = Main.createConnection();
+
+          String w1 = "REST";
+          String w2 = "rest";
+          int id1 = Main.getId(db, w1);
+          int id2 = Main.getId(db, w2);
+          assertEquals(id1, id2);
+          db.close();
+      });
+    }
 }
